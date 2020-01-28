@@ -1,4 +1,4 @@
-CREATE DATABABE 'Umuzi';
+CREATE DATABABE Umuzi;
 
 CREATE TABLE Customer (
     customerid serial primary key,
