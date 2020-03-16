@@ -1,33 +1,33 @@
-select * from customers
+SELECT * FROM customers;
 
-select firstname from customers;
+SELECT firstname FROM customers;
 
-select firstname from customers where customerid = 1;
+SELECT firstname FROM customers WHERE customerid = 1;
 
-update customers set firstname = 'Lerato Mabitso' where customerid = 1;
+UPDATE customers SET firstname = 'Lerato Mabitso' WHERE customerid = 1;
 
-delete from customers where customerid = 2;
+DELETE FROM customers WHERE customerid = 2;
 
-select count(status) from orders;
+SELECT count(status) FROM orders;
 
-select max(amount) from payments;
+SELECT max(amount) FROM payments;
 
-select * from customers order by country;
+SELECT * FROM customers ORDER BY country;
 
-select productname from products where buyprice between 100 and 600;
+SELECT productname FROM products WHERE buyprice BETWEEN 100 AND 600;
 
-select * from customers where country = 'Germany' and city = 'Berlin';
+SELECT * FROM customers WHERE country = 'Germany' AND city = 'Berlin';
 
-select * from customers where city = 'Durban' or city = 'Cape Town';
+SELECT * FROM customers WHERE city = 'Durban' OR city = 'Cape Town';
 
-select * from products where buyprice > 500;
+SELECT * FROM products WHERE buyprice > 500;
 
-select sum(amount) from payments;
+SELECT sum(amount) FROM payments;
 
-select count(status) from orders where status = 'Shipped';
+SELECT count(status) FROM orders WHERE status = 'Shipped';
 
-select avg(buyprice) from products;
+SELECT avg(buyprice) FROM products;
 
-select * from customers inner join payments on payments.customerid = customers.customerid;
+SELECT * FROM customers INNER JOIN payments ON payments.customerid = customers.customerid;
 
-select * from products where description = 'turnable front wheels, steering function';
+SELECT * FROM products WHERE Description LIKE '%Turnable front wheels%';

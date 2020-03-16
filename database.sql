@@ -1,6 +1,8 @@
+-- create Umuzi database
 CREATE DATABABE Umuzi;
 
-CREATE TABLE Customer (
+-- create customers table
+CREATE TABLE Customers (
     customerid serial primary key,
     firstname varchar(50),
     lastname varchar(50),
@@ -12,6 +14,7 @@ CREATE TABLE Customer (
     country varchar(50)
 );
 
+-- insert records into table
 INSERT INTO Customers ("customerid", "firstname", "lastname", "gender", "address", "phone", "email", "city", "country") VALUES
 (1,	'John',	'Hibert',	'Male',	'284 chaucer st',	84789657,	'john@gmail.com',	'Johannesburg',	'South Africa'),
 (2,	'Thando',	'Sithole',	'Female',	'240 Sect 1',	794445584,	'thando@gmail.com',	'Cape Town',	'South Africa'),
@@ -19,19 +22,36 @@ INSERT INTO Customers ("customerid", "firstname", "lastname", "gender", "address
 (4,	'Charl',	'Muller',	'Male',	'290A Dorset Ecke',	856872553,	'Charl.muller@yahoo.com',	'Berlin',	'Germany'),
 (5,	'Julia',	'Stein',	'Female',	'2 Wernerring',	672445058,	'Js234@yahoo.com',	'Frankfurt',	'Germany');
 
+-- create Employees table
 CREATE TABLE Employees (
     employeeid serial primary key,
     firstname varchar(50),
     lastname varchar(50),
     email varchar(100),
-    jobtitle varchar(20),
+    jobtitle varchar(20)
 );
 
+-- insert records into table
 INSERT INTO Employees ("employeeid", "firstname", "lastname", "email", "jobtitle") VALUES
 (1,	'Kani',	'Matthew',	'mat@gmail.com',	'Manager'),
 (2,	'Lesly',	'Cronje',	'LesC@gmail.com',	'Clerk'),
 (3,	'Gideon',	'Maduku',	'm@gmail.com',	'Accountant');
 
+-- create Products table
+CREATE TABLE Products (
+    productid serial primary key,
+    productname varchar(100),
+    description varchar(300),
+    buyprice decimal
+);
+
+-- insert records into table
+INSERT INTO Products ("productid", "productname", "description", "buyprice") VALUES
+(1,	'Harley Davidson Chopper',	'This replica features working kickstands, font suspension, gear-shift lever', 150.75),
+(2,	'Classic Car', 'Turnable front wheels , steering function', 550.75),
+(3,	'Sports Car', 'Turnable front wheels, steering function',	700.60);
+
+-- create Orders table
 CREATE TABLE Orders (
     orderid serial primary key,
     productid int REFERENCES products(productid),
@@ -42,11 +62,13 @@ CREATE TABLE Orders (
     status varchar(20)
 );
 
+-- insert records into table
 INSERT INTO Orders ("orderid", "productid", "paymentid", "fulfilledbyemployeeid", "daterequired", "dateshipped", "status") VALUES
 (1,	1,	1,	2,	'2018-05-09',	NULL,	'Not shipped'),
 (2,	1,	2,	2,	'2018-04-09',	'2018-03-09',	'Shipped'),
 (3,	3,	3,	3,	'2018-06-09',	NULL,	'Not shipped');
 
+-- create Payments table
 CREATE TABLE Payments (
     customerid int,
     paymentid serial primary key,
@@ -54,19 +76,8 @@ CREATE TABLE Payments (
     amount decimal
 );
 
+-- insert records into table
 INSERT INTO Payments ("customerid", "paymentid", "paymentdate", "amount") VALUES
 (1,	1,	'2018-01-09',	150.75),
 (5,	2,	'2018-03-09',	150.75),
 (4,	3,	'2018-03-09',	700.60);
-
-CREATE TABLE Products (
-    productid serial primary key,
-    productname varchar(100),
-    description varchar(300),
-    buyprice decimal
-);
-
-INSERT INTO Products ("productid", "productname", "description", "buyprice") VALUES
-(1,	'Harley Davidson Chopper',	'This replica features working kickstands, font suspension, gear-shift lever', 150.75),
-(2,	'Classic Car', 'Turnable front wheels , steering function', 550.75),
-(3,	'Sports Car', 'Turnable front wheels, steering function',	700.60);
